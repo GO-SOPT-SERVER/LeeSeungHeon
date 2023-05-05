@@ -10,6 +10,12 @@ import org.springframework.http.HttpStatus;
 public enum Success {
 
     /**
+     * 200 OK
+     */
+    GET_POST_LIST_SUCCESS(HttpStatus.OK, "게시물 리스트 조회에 성공했습니다."),
+    GET_POST_SUCCESS(HttpStatus.OK, "게시물 조회에 성공했습니다."),
+
+    /**
      * 201 CREATED
      */
     SIGNUP_SUCCESS(HttpStatus.CREATED, "회원가입이 완료됐습니다."),
