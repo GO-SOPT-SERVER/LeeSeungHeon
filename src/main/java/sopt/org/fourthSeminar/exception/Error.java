@@ -28,6 +28,7 @@ public enum Error {
      * 409 CONFLICT
      */
     ALREADY_EXIST_USER_EXCEPTION(HttpStatus.CONFLICT, "이미 존재하는 유저입니다"),
+    ALREADY_EXIST_EMOTION_EXCEPTION(HttpStatus.CONFLICT, "이미 해당 날짜에 감정이 기록되었습니다"),
 
 
     /**

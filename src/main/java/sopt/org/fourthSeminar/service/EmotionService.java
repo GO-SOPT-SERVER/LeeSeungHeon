@@ -7,12 +7,12 @@ import sopt.org.fourthSeminar.controller.dto.response.EmotionCalendarResponseDto
 import sopt.org.fourthSeminar.controller.dto.response.EmotionResponseDto;
 import sopt.org.fourthSeminar.domain.Emotion;
 import sopt.org.fourthSeminar.exception.Error;
+import sopt.org.fourthSeminar.exception.model.ConflictException;
 import sopt.org.fourthSeminar.exception.model.NotFoundException;
 import sopt.org.fourthSeminar.infrastructure.EmotionRepository;
 import sopt.org.fourthSeminar.service.dto.request.EmotionServiceDto;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +25,10 @@ public class EmotionService {
 
     @Transactional
     public void create(EmotionServiceDto request) {
+        if (emotionRepository.existsByRecordDate(request.getRecordDate())) {
+            throw new ConflictException(Error.ALREADY_EXIST_EMOTION_EXCEPTION, Error.ALREADY_EXIST_EMOTION_EXCEPTION.getMessage());
+        }
+
         Emotion newEmotion = Emotion.newInstance(
                 request.getEmotionContent(),
                 request.getRecordDate(),
@@ -40,7 +44,7 @@ public class EmotionService {
 
     @Transactional
     public List<EmotionCalendarResponseDto> getCalendar(LocalDate date) {
-        List<Emotion> emotions = emotionRepository.findAll();
+        List<Emotion> emotions = emotionRepository.findByRecordDateBetween(date.withDayOfMonth(1), date.withDayOfMonth(date.lengthOfMonth()));
 
         return emotions.stream()
                 .map(emotion -> EmotionCalendarResponseDto.of(emotion.getId(), emotion.getRecordDate(), emotion.getEmotionType()))
