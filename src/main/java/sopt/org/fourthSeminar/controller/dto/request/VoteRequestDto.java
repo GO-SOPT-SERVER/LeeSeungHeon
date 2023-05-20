@@ -4,23 +4,20 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BoardRequestDto {
-
-   @Email(message = "이메일 형식에 맞지 않습니다")
-    private String email;
+public class VoteRequestDto {
 
     @NotBlank
-    private String title;
+    private String name;
 
     @NotBlank
-    private String content;
+    private String part;
 
     @NotNull
-    private Boolean isPublic;
+    private List<Boolean> voteList;
 }

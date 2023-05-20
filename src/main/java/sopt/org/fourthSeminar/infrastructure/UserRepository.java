@@ -11,6 +11,7 @@ public interface UserRepository extends Repository<User, Long> {
     void save(User user);
 
     // READ
+    Optional<User> findById(Long id);
     Optional<User> findByEmail(String email);
     boolean existsByEmail(String email);
 
