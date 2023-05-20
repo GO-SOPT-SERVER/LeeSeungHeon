@@ -13,6 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("vote")
+@CrossOrigin("*")
 public class VoteController {
 
     private final VoteService voteService;
