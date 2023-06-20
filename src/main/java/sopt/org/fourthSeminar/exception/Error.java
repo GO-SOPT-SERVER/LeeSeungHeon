@@ -17,6 +17,8 @@ public enum Error {
     VALIDATION_WRONG_TYPE_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 타입이 입력되었습니다"),
     PARAMETER_TYPE_MISMATCH_EXCEPTION(HttpStatus.BAD_REQUEST, "파라미터의 타입이 잘못됐습니다"),
     INVALID_PASSWORD_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 비밀번호가 입력됐습니다."),
+    INVALID_MULTIPART_EXTENSION_EXCEPTION(HttpStatus.BAD_REQUEST, "허용되지 않은 타입의 파일입니다"),
+    REQUEST_BIND_EXCEPTION(HttpStatus.BAD_REQUEST, "request 데이터 바인딩에 실패했습니다"),
 
     /**
      * 401 UNAUTHORIZED
@@ -26,6 +28,8 @@ public enum Error {
     /**
      * 404 NOT FOUND
      */
+    NOT_FOUND_SAVE_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND, "이미지 저장에 실패했습니다"),
+    NOT_FOUND_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND, "이미지 이름을 찾을 수 없습니다"),
     NOT_FOUND_USER_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 유저입니다"),
     NOT_FOUND_POST_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 게시물입니다"),
     NOT_FOUND_EMOTION_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 감정 기록입니다"),
