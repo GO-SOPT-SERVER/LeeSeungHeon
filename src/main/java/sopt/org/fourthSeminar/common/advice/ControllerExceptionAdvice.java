@@ -43,15 +43,21 @@ public class ControllerExceptionAdvice {
         return ApiResponse.error(Error.PARAMETER_TYPE_MISMATCH_EXCEPTION, String.format("%s. (%s)", Error.PARAMETER_TYPE_MISMATCH_EXCEPTION.getMessage(), e.getName()));
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(UnexpectedTypeException.class)
-//    protected ApiResponse handleUnexpectedTypeException(final UnexpectedTypeException e) {
-//        return ApiResponse.error(Error.VALIDATION_WRONG_TYPE_EXCEPTION);
-//    }
-//
-//    /**
-//     * 500 Internal Server
-//     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(UnexpectedTypeException.class)
+    protected ApiResponse handleUnexpectedTypeException(final UnexpectedTypeException e) {
+        return ApiResponse.error(Error.VALIDATION_WRONG_TYPE_EXCEPTION);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BindException.class)
+    protected ApiResponse handleBindException(final BindException e) {
+        return ApiResponse.error(Error.REQUEST_BIND_EXCEPTION);
+    }
+
+    /**
+     * 500 Internal Server
+     */
 //    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 //    @ExceptionHandler(Exception.class)
 //    protected ApiResponse<Object> handleException(final Exception e) {

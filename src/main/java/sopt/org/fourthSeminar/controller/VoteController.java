@@ -20,8 +20,8 @@ public class VoteController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse create(@RequestBody @Valid VoteRequestDto request) {
+    public ApiResponse<Boolean> create(@RequestBody @Valid VoteRequestDto request) {
         voteService.create(request);
-        return ApiResponse.success(Success.CREATE_VOTE_SUCCESS);
+        return ApiResponse.success(Success.CREATE_VOTE_SUCCESS, true);
     }
 }
